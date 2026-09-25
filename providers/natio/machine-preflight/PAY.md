@@ -20,6 +20,9 @@ a technical signal, not investment advice or a replacement for a full audit.
 ## Spend-aware usage
 
 - Submit the final transaction payload immediately before asking for a signature.
-- Make one call per distinct `to`, `data`, `valueWei`, and optional `from` tuple.
+- Set `from` to the address that would sign the transaction; it is required so
+  caller-dependent authorization, balances, execution, and gas are simulated
+  for the real sender.
+- Make one call per distinct `from`, `to`, `data`, and `valueWei` tuple.
 - Do not call repeatedly for an unchanged payload unless the relevant on-chain
   state may have changed.
